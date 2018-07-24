@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
 import LoginPage from './LoginPage'
+import MainPage from './MainPage'
 
 class App extends Component {
   constructor() {
@@ -34,22 +30,7 @@ class App extends Component {
       );
     } else {
       page = (
-        <div>
-          <AppBar>
-            <Toolbar>
-              <Grid container justify='flex-end' spacing={12}>
-                <Grid item xs={2}>
-                  <SettingsApplicationsIcon style={{ fontSize: 40 }} />
-                </Grid>
-                <Grid item xs={1}>
-                  <AccountCircleIcon style={{ fontSize: 40 }} />
-                </Grid>
-              </Grid>
-            </Toolbar>
-          </AppBar>
-
-          <Button variant='contained'>Magic Carpet</Button>
-        </div>
+        <MainPage />
       );
     }
 
