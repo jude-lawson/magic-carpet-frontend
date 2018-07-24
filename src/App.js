@@ -7,6 +7,8 @@ import Toolbar from '@material-ui/core/Toolbar'
 import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 
+import LoginPage from './LoginPage'
+
 class App extends Component {
   constructor() {
     super();
@@ -28,19 +30,15 @@ class App extends Component {
     let page;
     if (!this.state.isLoggedIn) {
       page = (
-        <Button onClick={this.handleLogin}
-                variant='contained'>Log In With Lyft</Button>
+        <LoginPage handleLogin={this.handleLogin} />
       );
     } else {
       page = (
         <div>
           <AppBar>
             <Toolbar>
-              <Grid container spacing={12}>
-                <Grid item xs={10}>
-                  <h1 style={{ fontSize: 22, textAlign: 'left' }}>Magic Carpet</h1>
-                </Grid>
-                <Grid item xs={1}>
+              <Grid container justify='flex-end' spacing={12}>
+                <Grid item xs={2}>
                   <SettingsApplicationsIcon style={{ fontSize: 40 }} />
                 </Grid>
                 <Grid item xs={1}>
