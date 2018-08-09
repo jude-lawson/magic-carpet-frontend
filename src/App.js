@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
 import './App.css';
-import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
+
+import Login from './components/Login';
+import Main from './components/Main';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: false
+      loggedIn: false
     }
+
+    this.logIn = this.logIn.bind(this);
+  }
+
+  logIn() {
+    this.setState({ loggedIn: true })
   }
 
 
   render() {
-    let page;
-    if (!this.state.isLoggedIn) {
-      page = (
-        <Grid item xs={12}>
-          <Button variant='contained'>Log In With Lyft</Button>
-        </Grid>
+    let content;
+    if (!this.state.loggedIn) {
+      content = (
+        <Login handleLogin={this.logIn} />
+      );
+    } else if (this.state.loggedIn) {
+      content = (
+        <Main />
       );
     }
 
     return (
       <div className="App">
-        <Grid container spacing={24} alignItems='center' justify='center' id='page-container'>
-          {page}
-        </Grid>
+        {content}
       </div>
     );
   }
