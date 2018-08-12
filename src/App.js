@@ -31,6 +31,9 @@ class App extends Component {
         return paramObject;
       }, {});
 
+      /* NEXT UP: Store tokens in sessionStorage and create conditional 
+        to check for initialAuth, expiredAuth, validAuth flows
+      */
       RideService.getInitialAuth(parameters).then(initialAuth => { debugger })
     } else {
       return;
