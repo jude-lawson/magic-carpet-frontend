@@ -35,22 +35,6 @@ class App extends Component {
     } else {
       return;
     }
-
-    //   let encoded_client_auth = btoa(`${ride_client_id}:${ride_client_secret}`);
-
-    //   fetch('https://api.lyft.com/oauth/token', {
-    //     method: 'post',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': `Basic ${encoded_client_auth}`
-    //     },
-    //     body: JSON.stringify({
-    //       "grant_type": "authorization_code",
-    //       "code": parameters.code
-    //     })
-    //   }).then(response => { return response.json() })
-    //     .then(parsedResponse => { })
-    //     .catch((err) => { console.error(err) });
   }
 
 
