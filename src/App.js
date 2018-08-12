@@ -3,6 +3,8 @@ import './App.css';
 
 import Login from './components/Login';
 import Main from './components/Main';
+import { ride_client_id } from './config';
+import RideService from './services/ride_service';
 
 class App extends Component {
   constructor() {
@@ -15,7 +17,40 @@ class App extends Component {
   }
 
   logIn() {
-    this.setState({ loggedIn: true })
+    let oauth_url = `https://api.lyft.com/oauth/authorize?client_id=${ride_client_id}&scope=public%20profile%20rides.read%20rides.request%20offline&state=%20&response_type=code`
+    window.open(oauth_url,'_self');
+  }
+
+  componentDidMount() {
+    let parameters = window.location.search
+    if (parameters && parameters.includes('code')) {
+      parameters  = parameters.slice(1);
+      parameters = parameters.split('&').reduce((paramObject,combinedParameter) => {
+        combinedParameter = combinedParameter.split('=');
+        paramObject[combinedParameter[0]] = combinedParameter[1];
+        return paramObject;
+      }, {});
+
+      RideService.getInitialAuth(parameters).then(initialAuth => { debugger })
+    } else {
+      return;
+    }
+
+    //   let encoded_client_auth = btoa(`${ride_client_id}:${ride_client_secret}`);
+
+    //   fetch('https://api.lyft.com/oauth/token', {
+    //     method: 'post',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Authorization': `Basic ${encoded_client_auth}`
+    //     },
+    //     body: JSON.stringify({
+    //       "grant_type": "authorization_code",
+    //       "code": parameters.code
+    //     })
+    //   }).then(response => { return response.json() })
+    //     .then(parsedResponse => { })
+    //     .catch((err) => { console.error(err) });
   }
 
 
