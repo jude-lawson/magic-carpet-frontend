@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Login from './components/Login';
 import Main from './components/Main';
@@ -42,21 +43,14 @@ class App extends Component {
 
 
   render() {
-    let content;
-    if (!this.state.loggedIn) {
-      content = (
-        <Login handleLogin={this.logIn} />
-      );
-    } else if (this.state.loggedIn) {
-      content = (
-        <Main />
-      );
-    }
-
     return (
-      <div className="App">
-        {content}
-      </div>
+      <Router>
+        <div className="App">
+          <Route exact path='/' 
+            render={ (props) => <Login {...props} handleClick={() => { alert('Yo') }} /> } handleClick={() => { alert('Yo') }} />
+          <Route path='/main' component={Main} />
+        </div>
+      </Router>
     );
   }
 }

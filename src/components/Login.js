@@ -2,7 +2,7 @@ import React from 'react';
 
 const Login = (props) => {
   return (
-    <button onClick={props.handleLogin}>Log In With Lyft</button>
+    <button onClick={props.handleLogin} className='button'>Log In With Lyft</button>
   );
 }
 

@@ -1,3 +1,32 @@
 .App {
+  font-family: 'Roboto', sans-serif;
+  display: grid;
+  grid-template-rows: 15% 15% auto 15% 15%;
+  grid-template-columns: 20% 20% 20% 20% 20%;
   text-align: center;
+  /* background-image: url('./imgs/malte-schmidt-474904-unsplash.jpg'); */
+  background-image: url('./imgs/matthew-ronder-seid-483819-unsplash.jpg');
+  background-size: 100vw 100vh;
+}
+
+/* button {
+  border: none;
+} */
+
+.button {
+  grid-row-start: 2;
+  height: 40px;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  border-radius: .3em;
+  background: transparent;
+  color: #FFF;
+  font-size: 1.2rem;
+  border: 1px solid #ab37b6;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.button:hover {
+  cursor: pointer;
 }
