@@ -23,22 +23,33 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let parameters = window.location.search
-    if (parameters && parameters.includes('code')) {
-      parameters  = parameters.slice(1);
-      parameters = parameters.split('&').reduce((paramObject,combinedParameter) => {
-        combinedParameter = combinedParameter.split('=');
-        paramObject[combinedParameter[0]] = combinedParameter[1];
-        return paramObject;
-      }, {});
-
-      /* NEXT UP: Store tokens in sessionStorage and create conditional 
-        to check for initialAuth, expiredAuth, validAuth flows
-      */
-      RideService.getInitialAuth(parameters).then(initialAuth => { debugger })
-    } else {
+    if (window.location.pathname === '/main') {
       return;
     }
+
+    if (localStorage.getItem('access_token') && (Date.now() - localStorage.getItem('token_timestamp')) < 3000) {
+      window.location.href = '/main'
+    } else {
+       // This is for authenticating through rideService
+      var parameters = window.location.search
+      if (parameters && parameters.includes('code')) {
+        parameters  = parameters.slice(1);
+        parameters = parameters.split('&').reduce((paramObject,combinedParameter) => {
+          combinedParameter = combinedParameter.split('=');
+          paramObject[combinedParameter[0]] = combinedParameter[1];
+          return paramObject;
+        }, {});
+
+        RideService.getInitialAuth(parameters).then(initialAuth => {
+          localStorage.setItem('access_token', initialAuth.access_token)
+          localStorage.setItem('refresh_token', initialAuth.refresh_token)
+        });
+
+        window.location.href = '/main'
+      }
+    }
+    // If localStorage:access_token and it's not expired, window.location.href = /main
+    // else trigger auth flow
   }
 
 
@@ -47,7 +58,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <Route exact path='/' 
-            render={ (props) => <Login {...props} handleClick={() => { alert('Yo') }} /> } handleClick={() => { alert('Yo') }} />
+                 render={() => <Login handleLogin={this.logIn} />}
+          />
           <Route path='/main' component={Main} />
         </div>
       </Router>

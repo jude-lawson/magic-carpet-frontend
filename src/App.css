@@ -1,28 +1,75 @@
 .App {
   font-family: 'Roboto', sans-serif;
-  display: grid;
-  grid-template-rows: 15% 15% auto 15% 15%;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  text-align: center;
-  /* background-image: url('./imgs/malte-schmidt-474904-unsplash.jpg'); */
-  background-image: url('./imgs/matthew-ronder-seid-483819-unsplash.jpg');
   background-size: 100vw 100vh;
+  background: linear-gradient(#4bcffa, #FFF);
 }
+
+/* .App::before {
+  background: linear-gradient(#4bcffa, #FFF);
+  width: 100vw;
+  height: 100vh;
+  content: '';
+  display: block;
+  z-index: -10;
+  position: absolute;
+  animation: float 2s infinite alternate;
+} */
+
+/* @keyframes undulate {
+  0% {
+    background: linear-gradient()
+  }
+} */
 
 /* button {
   border: none;
 } */
 
+/* .bubble {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: mistyrose;
+  animation: float 2s infiinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0)
+  }
+
+  100% {
+    transform: translate(300px, 0)
+  }
+} */
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(10, 10%);
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+h1 {
+  width: 100vw;
+  text-align: center;
+  grid-row-start: 5;
+  margin: 0 auto;
+  font-size: 2.3rem;
+}
+
 .button {
-  grid-row-start: 2;
+  grid-row-start: 6;
   height: 40px;
   grid-column-start: 2;
   grid-column-end: 5;
   border-radius: .3em;
-  background: transparent;
+  background: rgba(150, 89, 251, .8);
   color: #FFF;
   font-size: 1.2rem;
-  border: 1px solid #ab37b6;
+  border: 1px solid rgba(150, 89, 251, .8);
   -moz-appearance: none;
   -webkit-appearance: none;
 }
