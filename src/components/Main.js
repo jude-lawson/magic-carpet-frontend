@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
-import { hostname } from '../public_config'
 
-// {
-// 	"search_settings": {
-// 		"radius": 5000,
-// 		"latitude": 39.7566541,
-// 		"longitude": -105.00066629999999,
-// 		"price": [1, 2, 3],
-// 		"term": "restaurants",
-// 		"open_now": true
-// 	},
-// 	"restrictions": {
-// 		"categories": [],
-// 		"min_radius": 1000
-// 	}
-// }
+import { hostname } from '../public_config'
+import RideService from '../services/ride_service'
 
 export default class Main extends Component {
 
@@ -26,6 +13,7 @@ export default class Main extends Component {
     });
 
     const retrieveDestination = async (position) => {
+      let origin = { latitude: position.coords.latitude, longitude: position.coords.longitude }
       let fetch_init = {
         "method": "post",
         "headers": {
@@ -34,8 +22,8 @@ export default class Main extends Component {
         body: JSON.stringify({
           "search_settings": {
             "radius": 5000,
-            "latitude": `${position.coords.latitude}`,
-            "longitude": `${position.coords.longitude}`,
+            "latitude": `${origin.latitude}`,
+            "longitude": `${origin.longitude}`,
             "price": [1, 2, 3],
             "term": "restaurants",
             "open_now": true
@@ -49,30 +37,15 @@ export default class Main extends Component {
 
       let response = await fetch(`${hostname}/api/v1/adventures`, fetch_init);
       let parsed_response = await response.json();
-      debugger
+      let min = (parseFloat(parsed_response.price_range.min_cost) / 100).toFixed(2)
+      let max = (parseFloat(parsed_response.price_range.max_cost) / 100).toFixed(2)
+      let confirmation = window.confirm(`This ride will cost about $${min} - $${max} USD. Would you like to continue?`)
+      if (confirmation) {
+        RideService.callRide(parsed_response.destination, origin)
+      } else {
+        return;
+      }
     }
-
-    // let response = await fetch(`${hostname}/api/v1/adventures`, fetch_init)
-    // console.log(response)
-  }
-
-
-  async callRide() {
-    // let request = JSON.stringify({ 
-    //   "ride_type": "lyft",
-    //   "origin": { "lat": location.latitude, "long": location.longitude }
-    // })
-
-    // let response = await fetch('https://api.lyft.com/v1/rides', {
-    //   method: 'post',
-    //   headers: {
-    //     'Authorization':  `Bearer ${localStorage.access_token}`,
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: {
-
-    //   }
-    // })
   }
 
   render () {
