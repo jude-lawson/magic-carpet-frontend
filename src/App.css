@@ -74,6 +74,10 @@ h1 {
   -webkit-appearance: none;
 }
 
+.magic-carpet-btn {
+  grid-row-start: 5;
+}
+
 .button:hover {
   cursor: pointer;
 }

@@ -2,7 +2,9 @@ import React from 'react';
 
 const Main = () => {
   return(
-    <button>Magic Carpet</button>
+    <div className='container'>
+      <button className="button magic-carpet-btn">Magic Carpet</button>
+    </div>
   );
 }
 
