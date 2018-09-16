@@ -13,11 +13,11 @@ export default class RideProgress extends Component {
     }
 
     let response = await fetch(`https://api.lyft.com/v1/rides/${ride_id}/cancel`, fetch_init)
-    let parsed_response = await response.json()
 
     if (response.status === 204) {
       window.location.href = '/ride_cancelled'
     } else {
+      let parsed_response = await response.json()
       RideProgress.confirmCancellation(parsed_response)
     }
   }
