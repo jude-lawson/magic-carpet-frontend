@@ -24,25 +24,30 @@ class RideService {
   static async callRide(destination, origin) {
     console.log(`Ride is being called to ${origin.latitude} / ${origin.longitude}`)
 
-    // let ride_request = JSON.stringify({
-    //   "ride_type": "lyft",
-    //   "origin": { "lat": origin.latitude, "long": origin.longitude },
-    //   "destination": { "lat": destination.latitude, "long": destination.longitude },
-    // })
+    let ride_request = JSON.stringify({
+      "ride_type": "lyft",
+      "origin": { "lat": origin.latitude, "long": origin.longitude },
+      "destination": { "lat": destination.latitude, "long": destination.longitude },
+    })
 
-    // let fetch_init = {
-    //   method: "post",
-    //   headers: {
-    //     "Authorization": `Bearer ${localStorage.access_token}`,
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: ride_request
-    // }
+    let fetch_init = {
+      method: "post",
+      headers: {
+        "Authorization": `Bearer ${localStorage.access_token}`,
+        "Content-Type": "application/json"
+      },
+      body: ride_request
+    }
 
-    // let response = await fetch('https://api.lyft.com/v1/rides', fetch_init)
-    // let parsed_response = response.json();
+    try {
+      var response = await fetch('https://api.lyft.com/v1/rides', fetch_init)
+    } catch(err) {
+      let error = err
+      debugger
+    }
+    let parsed_response = response.json();
     window.location.href = '/ride_called'
-    localStorage.setItem('latest_ride_id', 1234)
+    localStorage.setItem('latest_ride_id', parsed_response.ride_id)
   }
 
   static async cancelRide() {
