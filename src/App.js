@@ -5,12 +5,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Main from './components/Main';
 import RideProgress from './components/RideProgress';
-import { ride_client_id } from './config';
+// import { ride_client_id } from './config';
 import RideService from './services/ride_service';
 
 class App extends Component {
   constructor() {
-    console.log(process.env)
     super();
     this.state = {
       loggedIn: false
@@ -20,6 +19,7 @@ class App extends Component {
   }
 
   logIn() {
+    let ride_client_id = process.env.REACT_APP_RIDE_CLIENT_ID;
     let oauth_url = `https://api.lyft.com/oauth/authorize?client_id=${ride_client_id}&scope=public%20profile%20rides.read%20rides.request%20offline&state=%20&response_type=code`
     window.open(oauth_url,'_self');
   }
