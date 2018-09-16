@@ -30,7 +30,7 @@ export default class Main extends Component {
           },
           "restrictions": {
             "categories": [],
-            "min_radius": 1000
+            "min_radius": 1
           }
         })
       }
