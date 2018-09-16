@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Main from './components/Main';
 import RideProgress from './components/RideProgress';
+import CancelConfirmation from './components/CancelConfirmation';
 import RideService from './services/ride_service';
 
 class App extends Component {
@@ -31,8 +32,8 @@ class App extends Component {
     if (localStorage.getItem('access_token') && (Date.now() - localStorage.getItem('token_timestamp')) < 3000) {
       window.location.href = '/main'
     } else {
-      
-       // This is for authenticating through rideService
+
+      // This is for authenticating through rideService
       var parameters = window.location.search
       if (parameters && parameters.includes('code')) {
         parameters  = parameters.slice(1);
@@ -57,6 +58,7 @@ class App extends Component {
           />
           <Route path='/main' component={Main} />
           <Route path='/ride_called' component={RideProgress} />
+          <Route path='/ride_cancelled' component={CancelConfirmation} />
         </div>
       </Router>
     );

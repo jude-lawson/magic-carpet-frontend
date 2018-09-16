@@ -13,6 +13,13 @@
   width: 100vw;
 }
 
+.container p {
+  grid-row-start: 5;
+  text-align: center;
+  grid-column-start: 2;
+  grid-column-end: 5;
+}
+
 h1 {
   width: 100vw;
   text-align: center;
