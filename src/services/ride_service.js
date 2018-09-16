@@ -1,7 +1,7 @@
-import { ride_client_id, ride_client_secret } from '../config';
-
 class RideService {
   static async getInitialAuth(parameters) {
+    let ride_client_id = process.env.REACT_APP_RIDE_CLIENT_ID;
+    let ride_client_secret = process.env.REACT_APP_RIDE_CLIENT_SECRET;
     let encoded_client_auth = btoa(`${ride_client_id}:${ride_client_secret}`);
 
     let fetch_init = {

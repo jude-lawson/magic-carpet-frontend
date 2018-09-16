@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Main from './components/Main';
 import RideProgress from './components/RideProgress';
-// import { ride_client_id } from './config';
 import RideService from './services/ride_service';
 
 class App extends Component {
