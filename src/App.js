@@ -31,6 +31,7 @@ class App extends Component {
     if (localStorage.getItem('access_token') && (Date.now() - localStorage.getItem('token_timestamp')) < 3000) {
       window.location.href = '/main'
     } else {
+      
        // This is for authenticating through rideService
       var parameters = window.location.search
       if (parameters && parameters.includes('code')) {
@@ -41,16 +42,9 @@ class App extends Component {
           return paramObject;
         }, {});
 
-        RideService.getInitialAuth(parameters).then(initialAuth => {
-          localStorage.setItem('access_token', initialAuth.access_token)
-          localStorage.setItem('refresh_token', initialAuth.refresh_token)
-        });
-
-        window.location.href = '/main'
+        RideService.getInitialAuth(parameters)
       }
     }
-    // If localStorage:access_token and it's not expired, window.location.href = /main
-    // else trigger auth flow
   }
 
 

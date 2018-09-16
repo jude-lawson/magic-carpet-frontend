@@ -17,8 +17,12 @@ class RideService {
     }
 
     let response = await fetch('https://api.lyft.com/oauth/token', fetch_init)
-                    .catch((err) => { console.error(err) })
-    return await response.json();
+    let parsed_response =  await response.json();
+
+    localStorage.setItem('access_token', parsed_response.access_token)
+    localStorage.setItem('refresh_token', parsed_response.refresh_token)
+
+    window.location.href = '/main'
   }
 
   static async callRide(destination, origin) {
