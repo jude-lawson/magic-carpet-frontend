@@ -6,10 +6,6 @@ export default class AuthService {
       AuthService.authenticateThroughRideService()
     }
   }
-
-  static authenticateThroughRideService() {
-    
-  }
 }
 
 
