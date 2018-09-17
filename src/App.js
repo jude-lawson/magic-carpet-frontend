@@ -1,33 +1,66 @@
 import React, { Component } from 'react';
 import './App.css';
-import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Login from './components/Login';
+import Main from './components/Main';
+import RideProgress from './components/RideProgress';
+import CancelConfirmation from './components/CancelConfirmation';
+import RideService from './services/ride_service';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: false
+      loggedIn: false
+    }
+
+    this.logIn = this.logIn.bind(this);
+  }
+
+  logIn() {
+    let ride_client_id = process.env.REACT_APP_RIDE_CLIENT_ID;
+    let oauth_url = `https://api.lyft.com/oauth/authorize?client_id=${ride_client_id}&scope=public%20profile%20rides.read%20rides.request%20offline&state=%20&response_type=code`
+    window.open(oauth_url,'_self');
+  }
+
+  componentDidMount() {
+    if (window.location.pathname === '/main') {
+      return;
+    }
+
+    if (localStorage.getItem('access_token') && (Date.now() - localStorage.getItem('token_timestamp')) < 3000) {
+      window.location.href = '/main'
+    } else {
+
+      // This is for authenticating through rideService
+      var parameters = window.location.search
+      if (parameters && parameters.includes('code')) {
+        parameters  = parameters.slice(1);
+        parameters = parameters.split('&').reduce((paramObject,combinedParameter) => {
+          combinedParameter = combinedParameter.split('=');
+          paramObject[combinedParameter[0]] = combinedParameter[1];
+          return paramObject;
+        }, {});
+
+        RideService.getInitialAuth(parameters)
+      }
     }
   }
 
 
   render() {
-    let page;
-    if (!this.state.isLoggedIn) {
-      page = (
-        <Grid item xs={12}>
-          <Button variant='contained'>Log In With Lyft</Button>
-        </Grid>
-      );
-    }
-
     return (
-      <div className="App">
-        <Grid container spacing={24} alignItems='center' justify='center' id='page-container'>
-          {page}
-        </Grid>
-      </div>
+      <Router>
+        <div className="App">
+          <Route exact path='/' 
+                 render={() => <Login handleLogin={this.logIn} />}
+          />
+          <Route path='/main' component={Main} />
+          <Route path='/ride_called' component={RideProgress} />
+          <Route path='/ride_cancelled' component={CancelConfirmation} />
+        </div>
+      </Router>
     );
   }
 }
