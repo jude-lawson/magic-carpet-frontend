@@ -17,8 +17,12 @@ class RideService {
     }
 
     let response = await fetch('https://api.lyft.com/oauth/token', fetch_init)
-                    .catch((err) => { console.error(err) })
-    return await response.json();
+    let parsed_response =  await response.json();
+
+    localStorage.setItem('access_token', parsed_response.access_token)
+    localStorage.setItem('refresh_token', parsed_response.refresh_token)
+
+    window.location.href = '/main'
   }
 
   static async callRide(destination, origin) {
@@ -26,8 +30,8 @@ class RideService {
 
     let ride_request = JSON.stringify({
       "ride_type": "lyft",
-      "origin": { "lat": origin.latitude, "long": origin.longitude },
-      "destination": { "lat": destination.latitude, "long": destination.longitude },
+      "origin": { "lat": origin.latitude, "lng": origin.longitude },
+      "destination": { "lat": destination.latitude, "lng": destination.longitude },
     })
 
     let fetch_init = {
@@ -39,15 +43,11 @@ class RideService {
       body: ride_request
     }
 
-    try {
-      var response = await fetch('https://api.lyft.com/v1/rides', fetch_init)
-    } catch(err) {
-      let error = err
-      debugger
-    }
-    let parsed_response = response.json();
-    window.location.href = '/ride_called'
+    let response = await fetch('https://api.lyft.com/v1/rides', fetch_init)
+    let parsed_response = await response.json();
     localStorage.setItem('latest_ride_id', parsed_response.ride_id)
+
+    window.location.href = '/ride_called'
   }
 
   static async cancelRide() {
