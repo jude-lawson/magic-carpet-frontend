@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { hostname } from '../public_config'
 import RideService from '../services/ride_service'
+import Settings from '@material-ui/icons/Settings'
+import IconButton from '@material-ui/core/IconButton';
 
 export default class Main extends Component {
 
@@ -51,6 +53,9 @@ export default class Main extends Component {
   render () {
     return(
       <div className='container'>
+        <IconButton className='settings-button'>
+          <Settings className='settings-icon'/>
+        </IconButton>
         <button className="button magic-carpet-btn" onClick={this.getDestination}>Magic Carpet</button>
       </div>
     );

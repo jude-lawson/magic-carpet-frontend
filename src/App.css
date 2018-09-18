@@ -20,6 +20,30 @@
   grid-column-end: 5;
 }
 
+.container .settings-button {
+  right: 0;
+  position: absolute;
+  padding-top: 3px;
+  height: 10vh;
+  width: 10vw;
+  margin: 10px;
+}
+
+.container .settings-button:hover {
+  background-color: inherit !important;
+}
+
+.container .settings-icon {
+  color: rgba(150, 89, 251, .8);
+  height: 10vh;
+  width: 10vw;
+}
+
+.container .settings-icon:hover {
+  height: 11vh;
+  width: 11vw;
+}
+
 h1 {
   width: 100vw;
   text-align: center;

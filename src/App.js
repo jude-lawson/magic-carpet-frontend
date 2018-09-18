@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Login from './components/Login';
 import Main from './components/Main';
@@ -51,16 +52,18 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Route exact path='/' 
-                 render={() => <Login handleLogin={this.logIn} />}
-          />
-          <Route path='/main' component={Main} />
-          <Route path='/ride_called' component={RideProgress} />
-          <Route path='/ride_cancelled' component={CancelConfirmation} />
-        </div>
-      </Router>
+      <MuiThemeProvider>
+        <Router>
+          <div className="App">
+            <Route exact path='/'
+                   render={() => <Login handleLogin={this.logIn} />}
+            />
+            <Route path='/main' component={Main} />
+            <Route path='/ride_called' component={RideProgress} />
+            <Route path='/ride_cancelled' component={CancelConfirmation} />
+          </div>
+        </Router>
+      </MuiThemeProvider>
     );
   }
 }
