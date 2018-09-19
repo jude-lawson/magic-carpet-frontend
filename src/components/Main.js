@@ -34,7 +34,7 @@ export default class Main extends Component {
         })
       }
 
-      let response = await fetch(`${ENV['REACT_APP_API_HOSTNAME']}/api/v1/adventures`, fetch_init);
+      let response = await fetch(`${process.env['REACT_APP_API_HOSTNAME']}/api/v1/adventures`, fetch_init);
       let parsed_response = await response.json();
       let min = (parseFloat(parsed_response.price_range.min_cost) / 100).toFixed(2)
       let max = (parseFloat(parsed_response.price_range.max_cost) / 100).toFixed(2)
