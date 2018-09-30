@@ -62,7 +62,7 @@ export default class SettingsPage extends Component {
           <h1>{this.props.text}</h1>
         <p>Radius:</p>
         <div style={wrapperStyle}>
-          <Range min={1} max={5} defaultValue={[2, 4]} onChange={this.onChange)} tipFormatter={value => `${value} miles`} />
+          <Range min={1} max={5} defaultValue={[2, 4]} onChange={this.onChange} tipFormatter={value => `${value} miles`} />
         </div>
         <p>Rating:</p>
         <div style={wrapperStyle}>

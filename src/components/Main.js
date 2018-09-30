@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { hostname } from '../public_config'
 import RideService from '../services/ride_service'
+import SettingsPage from '../components/SettingsPage'
 import Settings from '@material-ui/icons/Settings'
 import IconButton from '@material-ui/core/IconButton';
 
@@ -50,12 +51,16 @@ export default class Main extends Component {
     }
   }
 
+  openSettings() {
+    window.location.href = '/settings'
+  }
+
   render () {
     return(
       <div className='container'>
-        {/* <IconButton className='settings-button'>
-          <Settings className='settings-icon'/>
-        </IconButton> */}
+        <IconButton className='settings-button'>
+          <Settings className='settings-icon' onClick={this.openSettings}/>
+        </IconButton>
         <button className="button magic-carpet-btn" onClick={this.getDestination}>Magic Carpet</button>
       </div>
     );

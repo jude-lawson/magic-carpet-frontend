@@ -6,6 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Login from './components/Login';
 import Main from './components/Main';
 import RideProgress from './components/RideProgress';
+import SettingsPage from './components/SettingsPage';
 import CancelConfirmation from './components/CancelConfirmation';
 import RideService from './services/ride_service';
 
@@ -59,6 +60,7 @@ class App extends Component {
                    render={() => <Login handleLogin={this.logIn} />}
             />
             <Route path='/main' component={Main} />
+            <Route path='/settings' component={SettingsPage} />
             <Route path='/ride_called' component={RideProgress} />
             <Route path='/ride_cancelled' component={CancelConfirmation} />
           </div>
