@@ -23,16 +23,16 @@ export default class Main extends Component {
         },
         body: JSON.stringify({
           "search_settings": {
-            "radius": 5000,
+            "radius": localStorage.getItem('maxRadius'),
             "latitude": `${origin.latitude}`,
             "longitude": `${origin.longitude}`,
-            "price": [1, 2, 3],
+            "price": localStorage.getItem('price'),
             "term": "restaurants",
             "open_now": true
           },
           "restrictions": {
             "categories": [],
-            "min_radius": 1
+            "min_radius": localStorage.getItem('minRadius'),
           }
         })
       }

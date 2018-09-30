@@ -18,9 +18,11 @@ export default class SettingsPage extends Component {
   }
 
   saveSettings() {
-    localStorage.setItem('radius', this.state.radius);
+    localStorage.setItem('minRadius', Math.round(this.state.radius[0] * 1609.344));
+    localStorage.setItem('maxRadius', Math.round(this.state.radius[1] * 1609.344));
     localStorage.setItem('rating', this.state.rating);
-    localStorage.setItem('price', this.state.price);
+    const priceRange = (start, stop, step) => Array.from({ length: (stop - start) / step }, (_, i) => start + (i * step));
+    localStorage.setItem('price', priceRange(this.state.price[0], (this.state.price[1] +1), 1));
     console.log('settings saved!');
     window.location.href = '/main'
   }
