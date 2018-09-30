@@ -53,9 +53,9 @@ export default class Main extends Component {
   render () {
     return(
       <div className='container'>
-        <IconButton className='settings-button'>
+        {/* <IconButton className='settings-button'>
           <Settings className='settings-icon'/>
-        </IconButton>
+        </IconButton> */}
         <button className="button magic-carpet-btn" onClick={this.getDestination}>Magic Carpet</button>
       </div>
     );
