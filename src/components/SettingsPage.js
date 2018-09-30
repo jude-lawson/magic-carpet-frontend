@@ -37,22 +37,33 @@ export default class SettingsPage extends Component {
     }
   }
 
-  saveSettings(data) {
-    // store settings data in local storage
-    console.log('settings saved!')
+  saveSettings() {
+    localStorage.setItem('radius', this.state.radius);
+    localStorage.setItem('rating', this.state.rating);
+    localStorage.setItem('price', this.state.price);
+    console.log('settings saved!');
+    window.location.href = '/main'
   }
 
-  saveRadius(data) {
-    console.log("here!");
-    this.setState({ radius: [data[0], data[1]] })
+  saveRadius = (radius) => {
+    console.log(radius);
+    this.setState({
+      radius,
+    });
   }
 
-  savePrice(data) {
-    this.setState({ price: [data[0], data[1]] })
+  saveRating = (rating) => {
+    console.log(rating);
+    this.setState({
+      rating,
+    });
   }
 
-  saveRating(data) {
-    this.setState({ rating: [data[0], data[1]] })
+  savePrice = (price) => {
+    console.log(price);
+    this.setState({
+      price,
+    });
   }
 
   render() {
@@ -60,19 +71,19 @@ export default class SettingsPage extends Component {
       <div className='settings'>
         <div className='settings_inner'>
           <h1>{this.props.text}</h1>
-        <p>Radius:</p>
-        <div style={wrapperStyle}>
-          <Range min={1} max={5} defaultValue={[2, 4]} onChange={this.onChange} tipFormatter={value => `${value} miles`} />
-        </div>
-        <p>Rating:</p>
-        <div style={wrapperStyle}>
-          <Range min={1} max={5} defaultValue={[2, 4]} tipFormatter={value => `${value} stars`} />
-        </div>
-        <p>Price:</p>
-        <div style={wrapperStyle}>
-          <Range min={1} max={4} defaultValue={[2, 3]} tipFormatter={value => `${value} $`} />
-        </div>
-        <button onClick={(event) =>{this.saveSettings(); this.props.closeSettings()}}>Save</button>
+          <p>Radius:</p>
+          <div style={wrapperStyle}>
+            <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.radius} onChange={this.saveRadius} allowCross="false" tipFormatter={value => `${value} miles`} />
+          </div>
+          <p>Rating:</p>
+          <div style={wrapperStyle}>
+            <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.rating} onChange={this.saveRating} allowCross="false" tipFormatter={value => `${value} stars`} />
+          </div>
+          <p>Price:</p>
+          <div style={wrapperStyle}>
+            <Range min={1} max={4} defaultValue={[2, 3]} value={this.state.price} onChange={this.savePrice} allowCross="false" tipFormatter={value => `${value} $`} />
+          </div>
+          <button onClick={(event) => this.saveSettings()}>Save Settings</button>
         </div>
       </div>
     );
