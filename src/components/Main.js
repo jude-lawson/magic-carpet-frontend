@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import RideService from '../services/ride_service'
+import Settings from '@material-ui/icons/Settings'
+import IconButton from '@material-ui/core/IconButton';
 
 export default class Main extends Component {
 
@@ -20,16 +22,16 @@ export default class Main extends Component {
         },
         body: JSON.stringify({
           "search_settings": {
-            "radius": 5000,
+            "radius": localStorage.getItem('maxRadius'),
             "latitude": `${origin.latitude}`,
             "longitude": `${origin.longitude}`,
-            "price": [1, 2, 3],
+            "price": localStorage.getItem('price'),
             "term": "restaurants",
             "open_now": true
           },
           "restrictions": {
             "categories": [],
-            "min_radius": 1
+            "min_radius": localStorage.getItem('minRadius'),
           }
         })
       }
@@ -47,9 +49,16 @@ export default class Main extends Component {
     }
   }
 
+  openSettings() {
+    window.location.href = '/settings'
+  }
+
   render () {
     return(
       <div className='container'>
+        <IconButton className='settings-button'>
+          <Settings className='settings-icon' onClick={this.openSettings}/>
+        </IconButton>
         <button className="button magic-carpet-btn" onClick={this.getDestination}>Magic Carpet</button>
       </div>
     );
