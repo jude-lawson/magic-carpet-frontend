@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { hostname } from '../public_config'
 import RideService from '../services/ride_service'
-import SettingsPage from '../components/SettingsPage'
 import Settings from '@material-ui/icons/Settings'
 import IconButton from '@material-ui/core/IconButton';
 
