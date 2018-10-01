@@ -50,15 +50,17 @@ export default class SettingsPage extends Component {
 
   render() {
     return (
-      <div className='settings'>
-        <h1>{this.props.text}</h1>
-        <p>Radius:</p>
-          <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.radius} onChange={this.saveRadius} allowCross={false} tipFormatter={value => `${value} miles`} />
-        <p>Rating:</p>
-          <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.rating} onChange={this.saveRating} allowCross={false} tipFormatter={value => `${value} stars`} />
-        <p>Price:</p>
-          <Range min={1} max={4} defaultValue={[2, 3]} value={this.state.price} onChange={this.savePrice} allowCross={false} tipFormatter={value => `${value} $`} />
-        <button onClick={(event) => this.saveSettings()}>Save Settings</button>
+      <div className='container'>
+        <div className='settings'>
+          <h1>{this.props.text}</h1>
+          <h4 className='settings-header'>Radius:</h4>
+            <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.radius} onChange={this.saveRadius} allowCross={false} tipFormatter={value => `${value} miles`} />
+          <h4 className='settings-header'>Rating:</h4>
+            <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.rating} onChange={this.saveRating} allowCross={false} tipFormatter={value => `${value} stars`} />
+          <h4 className='settings-header'>Price:</h4>
+            <Range min={1} max={4} defaultValue={[2, 3]} value={this.state.price} onChange={this.savePrice} allowCross={false} tipFormatter={value => `${value} $`} />
+        </div>
+        <button className='button' onClick={(event) => this.saveSettings()}>Save Settings</button>
       </div>
     );
   }
