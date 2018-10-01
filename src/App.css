@@ -1,23 +1,58 @@
 /* App */
 
 body {
+  background-color: #000;
   color: #FFF;
   font-family: 'Helvetica', sans-serif;
-  letter-spacing: .3rem;
   font-weight: 100;
+  letter-spacing: .3rem;
 }
 
 .App {
   background-color: #000;
-  background-size: 100vw 100vh;
+  z-index: -2;
+}
+
+.background-image {
+  animation: scroll 35s linear forwards;
+  background-image: url(/images/background.gif);
+  background-size: cover;
+  height: 100vh;
+  left: 0;
+  mix-blend-mode: lighten;
+  opacity: .5;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  transform-origin: 50% 100%;
+  transform: perspective(3000px) rotateX(32deg);
+  width:100%;
+}
+
+.background-image:after {
+  background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+  bottom: 80%;
+  content: ' ';
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+
+@keyframes scroll {
+  100% { 
+    background-position:0px 3000px;
+  }
 }
 
 .container {
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 20vh 30vh 20vh 30vh;
-  text-align: center;
   height: 93vh;
+  text-align: center;
   width: 100vw;
 }
 
@@ -40,8 +75,9 @@ body {
   grid-row: 3;
   height: 40px;
   letter-spacing: .3rem;
-  margin: 0 auto;
   width: 70%;
+  min-width: 20rem;
+  justify-self: center;
 }
 
 .magic-carpet-btn {
@@ -94,6 +130,7 @@ body {
   justify-self: center;
   max-height: 300px;
   max-width: 600px;
+  min-width: 200px;
 }
 
 /* Settings */
