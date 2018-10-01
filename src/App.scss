@@ -1,0 +1,152 @@
+/* App */
+
+body {
+  color: #FFF;
+  font-family: 'Helvetica', sans-serif;
+  letter-spacing: .3rem;
+  font-weight: 100;
+}
+
+.App {
+  background-color: #000;
+  background-size: 100vw 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  grid-template-rows: 20vh 30vh 20vh 30vh;
+  text-align: center;
+  height: 93vh;
+  width: 100vw;
+}
+
+.container p {
+  grid-column: 2;
+  grid-row: 3;
+  text-align: center;
+}
+
+/* Buttons*/
+
+.button {
+  background-color: #FFF;
+  border-radius: 20px;
+  border: none;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 100;
+  grid-column: 2;
+  grid-row: 3;
+  height: 40px;
+  letter-spacing: .3rem;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.magic-carpet-btn {
+  grid-row: 3;
+}
+
+.cancel-btn {
+  background-color: #ff5e57;
+  border-radius: 50%;
+  grid-row: 3;
+  height: 200px;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+/* Settings Icon*/
+
+.container .settings-button {
+  grid-column: 3;
+  grid-row: 1;
+  height: 10vh;
+  margin: 10px;
+}
+
+.container .settings-button:hover {
+  background-color: inherit !important;
+}
+
+.container .settings-icon {
+  color: #FFF;
+  height: 8vh;
+  width: 8vw;
+  transition: transform 0.5s ease;
+}
+
+.container .settings-icon:hover {
+  transform:rotate(360deg);
+}
+
+/* Logo*/
+
+.logo {
+  font-size: 3rem;
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: center;
+  max-height: 300px;
+  max-width: 600px;
+}
+
+/* Settings */
+
+.settings {
+  grid-column: 2;
+  grid-row: 2;
+  text-align: left;
+}
+
+.settings-header {
+  font-weight: 100;
+  letter-spacing: .3rem;
+}
+
+/* Cancellation Confirmation*/
+
+.cancellation-confirmation {
+  grid-row: 2;
+  grid-column: 2;
+  align-self: center;
+  font-weight: 100;
+}
+
+/* loading */
+
+.loading-icon {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: center;
+  max-height: 300px;
+  max-width: 600px;
+}
+
+/* Sponsor Banner */
+
+.sponsor-banner {
+  grid-row: 5;
+  grid-column: 1 / 4;
+  width: 100%;
+  text-align: center;
+}
+
+.sponsor-tagline {
+  display: inline-block;
+}
+
+.sponsor-logo {
+  height: 30px;
+  vertical-align: middle;
+  padding: 0 .5rem;
+}
+
+.yelp-logo {
+  vertical-align: text-bottom;
+}
