@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import Sponsor from './components/Sponsor'
 import Login from './components/Login';
 import Main from './components/Main';
+import Loader from './components/Loader';
 import RideProgress from './components/RideProgress';
 import SettingsPage from './components/SettingsPage';
 import CancelConfirmation from './components/CancelConfirmation';
@@ -35,7 +36,7 @@ class App extends Component {
       window.location.href = '/main'
     } else {
 
-      // This is for authenticating through rideService
+      // NoThis is for authenticating through rideService
       var parameters = window.location.search
       if (parameters && parameters.includes('code')) {
         parameters  = parameters.slice(1);
@@ -56,13 +57,13 @@ class App extends Component {
       <MuiThemeProvider>
         <Router>
           <div className="App">
-            <Route exact path='/'
-                   render={() => <Login handleLogin={this.logIn} />}
-            />
+            <Route exact path='/' render={() => <Login handleLogin={this.logIn} />}/>
             <Route path='/main' component={Main} />
             <Route path='/settings' component={SettingsPage} />
+            <Route path='/loading' component={Loader} />
             <Route path='/ride_called' component={RideProgress} />
             <Route path='/ride_cancelled' component={CancelConfirmation} />
+            <Sponsor />
           </div>
         </Router>
       </MuiThemeProvider>

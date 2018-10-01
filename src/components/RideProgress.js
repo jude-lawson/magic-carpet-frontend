@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 export default class RideProgress extends Component {
+  
   async cancelRide() {
     let ride_id = localStorage.latest_ride_id;
 
