@@ -17,11 +17,9 @@ class App extends Component {
     this.state = {
       loggedIn: false
     }
-
-    this.logIn = this.logIn.bind(this);
   }
 
-  logIn() {
+  logIn = () => {
     let ride_client_id = process.env.REACT_APP_RIDE_CLIENT_ID;
     let oauth_url = `https://api.lyft.com/oauth/authorize?client_id=${ride_client_id}&scope=public%20profile%20rides.read%20rides.request%20offline&state=%20&response_type=code`
     window.open(oauth_url,'_self');
@@ -33,7 +31,7 @@ class App extends Component {
     }
 
     if (localStorage.getItem('access_token') && (Date.now() - localStorage.getItem('token_timestamp')) < 3000) {
-      window.location.href = '/main'
+      this.props.history.push('/main')
     } else {
 
       // NoThis is for authenticating through rideService

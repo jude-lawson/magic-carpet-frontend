@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class CancelConfirmation extends Component {
   
   goHome() {
-    window.location.href = '/main'
+    this.props.history.push('/main') 
   }
 
   render() {
