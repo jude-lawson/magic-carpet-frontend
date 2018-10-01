@@ -9,7 +9,7 @@ export default class CancelConfirmation extends Component {
   render() {
     return (
       <div className='container'>
-        <p>No worries! Your ride has been cancelled!</p>
+        <h3 className='cancellation-confirmation'>No worries! Your ride has been cancelled!</h3>
         <button className='button' onClick={this.goHome}>Try Again?</button>
       </div>
     );
