@@ -4,7 +4,7 @@ import RideService from '../services/ride_service'
 import Settings from '@material-ui/icons/Settings'
 import IconButton from '@material-ui/core/IconButton';
 
-export default class Main extends Component {
+class Main extends Component {
 
   async getDestination() {
     console.log('Getting position...')
@@ -49,8 +49,8 @@ export default class Main extends Component {
     }
   }
 
-  openSettings() {
-    window.location.href = '/settings'
+  openSettings = () => {
+    this.props.history.push('/settings');
   }
 
   render () {
@@ -64,3 +64,5 @@ export default class Main extends Component {
     );
   }
 }
+
+export default Main;
