@@ -3,7 +3,7 @@ import React from 'react';
 const Login = (props) => {
   return (
     <div className='container'>
-      <h1>Magic Carpet</h1>
+      <img className='logo' alt='magic-carpet-logo' src='/images/magic-carpet-logo.gif'/>
       <button onClick={props.handleLogin} className='button'>Log In With Lyft</button>
     </div>
   );
