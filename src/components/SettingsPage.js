@@ -24,7 +24,7 @@ export default class SettingsPage extends Component {
     const priceRange = (start, stop, step) => Array.from({ length: (stop - start) / step }, (_, i) => start + (i * step));
     localStorage.setItem('price', priceRange(this.state.price[0], (this.state.price[1] +1), 1));
     console.log('settings saved!');
-    window.location.href = '/main'
+    this.props.history.push('/main');
   }
 
   saveRadius = (radius) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class CancelConfirmation extends Component {
   
-  goHome() {
+  goHome = () => {
     this.props.history.push('/main') 
   }
 

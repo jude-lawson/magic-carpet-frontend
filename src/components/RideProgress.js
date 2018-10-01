@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class RideProgress extends Component {
   
-  async cancelRide() {
+  cancelRide = async () => {
     let ride_id = localStorage.latest_ride_id;
 
     let fetch_init = {
@@ -16,7 +16,7 @@ export default class RideProgress extends Component {
     let response = await fetch(`https://api.lyft.com/v1/rides/${ride_id}/cancel`, fetch_init)
 
     if (response.status === 204) {
-      window.location.href = '/ride_cancelled'
+      this.props.history.push('/ride_cancelled');
     } else {
       let parsed_response = await response.json()
       RideProgress.confirmCancellation(parsed_response)
@@ -34,7 +34,7 @@ export default class RideProgress extends Component {
     }
   }
 
-  static async cancelAgain(parsed_response) {
+  static cancelAgain = async (parsed_response) => {
     let fetch_init = {
       method: 'post',
       headers: {
@@ -47,10 +47,10 @@ export default class RideProgress extends Component {
     let response = await fetch(`https://api.lyft.com/v1/rides/${localStorage.latest_ride_id}/cancel`, fetch_init)
 
     if (response.status === 204) {
-      window.location.href = '/main'
+      this.props.history.push('/main');
     } else {
       alert('An unknown error has occurred. Please open up the Lyft app to confirm cancellation')
-      window.location.href = '/main'
+      this.props.history.push('/main');
     }
   }
   
