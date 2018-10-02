@@ -27,6 +27,7 @@ body {
   transform-origin: 50% 100%;
   transform: perspective(3000px) rotateX(32deg);
   width:100%;
+  pointer-events:none;
 }
 
 .background-image:after {
@@ -42,7 +43,7 @@ body {
 
 
 @keyframes scroll {
-  100% { 
+  100% {
     background-position:0px 3000px;
   }
 }
