@@ -57,7 +57,6 @@ class App extends Component {
       <MuiThemeProvider>
         <Router>
           <div className="App">
-            <div className="background-image"></div>
               <Route exact path='/' render={() => <Login handleLogin={this.logIn} />}/>
               <Route path='/main' component={Main} />
               <Route path='/settings' component={SettingsPage} />
@@ -65,6 +64,7 @@ class App extends Component {
               <Route path='/ride_called' component={RideProgress} />
               <Route path='/ride_cancelled' component={CancelConfirmation} />
               <Sponsor />
+          <div className="background-image"></div>
           </div>
         </Router>
       </MuiThemeProvider>

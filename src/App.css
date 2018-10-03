@@ -25,7 +25,7 @@ body {
   position: fixed;
   top: 0;
   transform-origin: 50% 100%;
-  transform: perspective(3000px) rotateX(32deg);
+  transform: perspective(3000px) rotateX(20deg);
   width:100%;
 }
 
@@ -54,6 +54,7 @@ body {
   height: 93vh;
   text-align: center;
   width: 100vw;
+  z-index: 3;
 }
 
 .container p {
@@ -74,10 +75,11 @@ body {
   grid-column: 2;
   grid-row: 3;
   height: 40px;
-  letter-spacing: .3rem;
-  width: 70%;
-  min-width: 20rem;
   justify-self: center;
+  letter-spacing: .3rem;
+  min-width: 20rem;
+  width: 70%;
+  z-index: 5;
 }
 
 .magic-carpet-btn {
@@ -90,7 +92,9 @@ body {
   grid-row: 3;
   height: 200px;
   margin: 0 auto;
+  min-width: none; 
   width: 200px;
+  z-index: 5;
 }
 
 .button:hover {
@@ -104,6 +108,7 @@ body {
   grid-row: 1;
   height: 10vh;
   margin: 10px;
+  z-index: 5;
 }
 
 .container .settings-button:hover {
@@ -113,8 +118,9 @@ body {
 .container .settings-icon {
   color: #FFF;
   height: 8vh;
-  width: 8vw;
   transition: transform 0.5s ease;
+  width: 8vw;
+  z-index: 5;
 }
 
 .container .settings-icon:hover {
@@ -139,6 +145,7 @@ body {
   grid-column: 2;
   grid-row: 2;
   text-align: left;
+  z-index: 5;
 }
 
 .settings-header {
