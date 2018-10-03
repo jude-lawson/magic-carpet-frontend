@@ -48,10 +48,6 @@ class RideService {
 
     window.location.href = '/ride_called'
   }
-
-  // static async cancelRide() {
-  //   console.log(localStorage.latest_ride_id)
-  // }
 }
 
 export default RideService;
