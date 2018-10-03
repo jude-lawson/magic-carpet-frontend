@@ -9,6 +9,7 @@ import Loader from './components/Loader';
 import RideProgress from './components/RideProgress';
 import SettingsPage from './components/SettingsPage';
 import CancelConfirmation from './components/CancelConfirmation';
+import NoDestination from './components/NoDestination';
 import RideService from './services/ride_service';
 
 class App extends Component {
@@ -61,6 +62,7 @@ class App extends Component {
             <Route path='/loading' component={Loader} />
             <Route path='/ride_called' component={RideProgress} />
             <Route path='/ride_cancelled' component={CancelConfirmation} />
+            <Route path='/no-destination' component={NoDestination} />
             <Sponsor />
             <div className="background-image"></div>
           </div>

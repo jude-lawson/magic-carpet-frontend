@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 
 import RideService from '../services/ride_service'
 import Settings from '@material-ui/icons/Settings'
@@ -6,11 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 
 class Main extends Component {
 
-  async getDestination() {
-    console.log('Getting position...')
+  getDestination = async () => {
     navigator.geolocation.getCurrentPosition((position) => {
       retrieveDestination(position);
-      console.log('Position retrieved!')
     });
 
     const retrieveDestination = async (position) => {
@@ -38,13 +37,17 @@ class Main extends Component {
 
       let response = await fetch(`${process.env['REACT_APP_API_HOSTNAME']}/api/v1/adventures`, fetch_init);
       let parsed_response = await response.json();
-      let min = (parseFloat(parsed_response.price_range.min_cost) / 100).toFixed(2)
-      let max = (parseFloat(parsed_response.price_range.max_cost) / 100).toFixed(2)
-      let confirmation = window.confirm(`This ride will cost about $${min} - $${max} USD. Would you like to continue?`)
-      if (confirmation) {
-        RideService.callRide(parsed_response.destination, origin)
+      if (response.status === 400 && parsed_response.error === "ImpossibleRequest: Filter Criteria too strict") {
+        this.props.history.push('/no-destination');
       } else {
-        return;
+        let min = (parseFloat(parsed_response.price_range.min_cost) / 100).toFixed(2)
+        let max = (parseFloat(parsed_response.price_range.max_cost) / 100).toFixed(2)
+        let confirmation = window.confirm(`This ride will cost about $${min} - $${max} USD. Would you like to continue?`)
+        if (confirmation) {
+          RideService.callRide(parsed_response.destination, origin)
+        } else {
+          return;
+        }
       }
     }
   }
@@ -59,10 +62,11 @@ class Main extends Component {
         <IconButton className='settings-button'>
           <Settings className='settings-icon' onClick={this.openSettings}/>
         </IconButton>
+        <span className='optional-message-container'>{this.props.optionalMessage}</span>
         <button className="button magic-carpet-btn" onClick={this.getDestination}>Magic Carpet</button>
       </div>
     );
   }
 }
 
-export default Main;
+export default withRouter(Main);
