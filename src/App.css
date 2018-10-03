@@ -92,7 +92,7 @@ body {
   grid-row: 3;
   height: 200px;
   margin: 0 auto;
-  min-width: none; 
+  min-width: auto; 
   width: 200px;
   z-index: 5;
 }
