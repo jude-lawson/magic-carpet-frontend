@@ -67,8 +67,7 @@ export default class RideProgress extends Component {
 
     return (
       <div className='container'>
-        <span className='optional-message-container'>Let the Adventure begin! Your Lyft is on its way!</span>
-        <span class='reviews-banner'>Here are some reviews about where you're headed!</span>
+        <span class='reviews-banner'>Let the Adventure begin! Your ride has been called. Here are some reviews about where you're headed.</span>
         <div class='reviews-container'>
           {reviews}
         </div>
