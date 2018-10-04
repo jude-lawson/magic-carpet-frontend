@@ -1,7 +1,7 @@
 /* App */
 
 body {
-  background-color: #000;
+  background-color: #2f2239;
   color: #FFF;
   font-family: 'Helvetica', sans-serif;
   font-weight: 100;
@@ -9,7 +9,7 @@ body {
 }
 
 .App {
-  background-color: #000;
+  background-color: #2f2239;
   z-index: -2;
 }
 
@@ -66,10 +66,10 @@ body {
 /* Buttons*/
 
 .button {
-  background-color: #FFF;
+  background-color: #9a6595;
   border-radius: 20px;
   border: none;
-  color: #000;
+  color: white;
   font-size: 1.2rem;
   font-weight: 100;
   grid-column: 2;
@@ -116,7 +116,7 @@ body {
 }
 
 .container .settings-icon {
-  color: #FFF;
+  color: #7b7dbc;
   height: 8vh;
   width: 8vw;
   transition: transform 0.5s ease;
@@ -152,6 +152,23 @@ body {
   letter-spacing: .3rem;
 }
 
+.settings-save-button {
+  background-color: #9a6595;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 100;
+  grid-column: 2;
+  grid-row: 4;
+  height: 40px;
+  justify-self: center;
+  letter-spacing: .3rem;
+  min-width: 20rem;
+  width: 70%;
+  z-index: 5;
+}
+
 /* Cancellation Confirmation*/
 
 .cancellation-confirmation {
@@ -182,6 +199,7 @@ body {
 
 .sponsor-tagline {
   display: inline-block;
+  margin: 1px;
 }
 
 .sponsor-logo {
@@ -198,6 +216,7 @@ body {
 
 .optional-message-container {
   grid-column-start: 2;
-  grid-row-start: 2;
+  grid-row-start: 1;
+  padding-top: 100px;
   z-index: 9;
 }

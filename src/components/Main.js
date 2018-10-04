@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 class Main extends Component {
 
   componentDidMount() {
-    if (localStorage.getItem('minRadius') == undefined) {
+    if (localStorage.getItem('minRadius') === undefined) {
       localStorage.setItem('minRadius', 3219);
       localStorage.setItem('maxRadius', 6437);
       localStorage.setItem('rating', [2,4]);
@@ -71,7 +71,7 @@ class Main extends Component {
         <IconButton className='settings-button'>
           <Settings className='settings-icon' onClick={this.openSettings}/>
         </IconButton>
-        <span className='optional-message-container'>{this.props.optionalMessage}</span>
+        <span className='optional-message-container'>Don't know where to eat? We'll Handle It. One Button. One Adventure.</span>
         <button className="button magic-carpet-btn" onClick={this.getDestination}>Magic Carpet</button>
       </div>
     );
