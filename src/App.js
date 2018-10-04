@@ -57,7 +57,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <Route exact path='/' render={() => <Login handleLogin={this.logIn} />}/>
-            <Route path='/main' component={Main} />
+            <Route path='/main' render={() => <Main optionalMessage="Don't know where to eat? We'll Handle It. One Button. One Adventure." />} />
             <Route path='/settings' component={SettingsPage} />
             <Route path='/loading' component={Loader} />
             <Route path='/ride_called' component={RideProgress} />

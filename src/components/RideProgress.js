@@ -57,8 +57,8 @@ export default class RideProgress extends Component {
   render() {
     let reviews = JSON.parse(localStorage.current_reviews).map(review => {
       return (
-        <div>
-          <span key={`review-${review.id}`} className='review'>{review.text}</span>
+        <div key={`review-${review.id}`}>
+          <span className='review'>{review.text}</span>
           <br />
           <span>~~~~</span>
         </div>
@@ -67,9 +67,8 @@ export default class RideProgress extends Component {
 
     return (
       <div className='container'>
-        <span className='optional-message-container'>Let the Adventure begin! Your Lyft is on its way!</span>
-        <span class='reviews-banner'>Here are some reviews about where you're headed!</span>
-        <div class='reviews-container'>
+        <span className='reviews-banner'>Let the Adventure begin! Your ride has been called. Here are some reviews about where you're headed.</span>
+        <div className='reviews-container'>
           {reviews}
         </div>
         <button className='button cancel-btn' onClick={this.cancelRide}>Cancel Ride</button>
