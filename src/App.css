@@ -169,6 +169,7 @@ body {
   min-width: 20rem;
   width: 70%;
   z-index: 5;
+  margin-top: 45px;
 }
 
 .settings-cancel-button {
