@@ -44,6 +44,10 @@ export default class SettingsPage extends Component {
     });
   }
 
+  cancel() {
+    this.props.history.push('/main');
+  }
+
   render() {
     return (
       <div className='container'>
@@ -57,6 +61,7 @@ export default class SettingsPage extends Component {
             <Range min={1} max={4} defaultValue={[2, 3]} value={this.state.price} onChange={this.savePrice} allowCross={false} tipFormatter={value => `${value} $`} dots={true} />
         </div>
         <button className='settings-save-button' onClick={(event) => this.saveSettings()}>Save Settings</button>
+        <button className='settings-cancel-button' onClick={(event) => this.cancel()}>Back</button>
       </div>
     );
   }
