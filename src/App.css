@@ -271,9 +271,62 @@ body {
   overflow-y: scroll;
   margin-bottom: 6px;
   z-index: 9;
-  padding: 0 8px;
+  padding: 4px 8px;
 }
 
 .review {
   padding: 4px;
 }
+
+/* Landscape */
+
+@media screen and (orientation: landscape) {
+
+  /* Settings Landscape */
+
+  .settings-header {
+    margin: 1px;
+  }
+
+  .settings-cancel-button {
+    margin-top: 20px;
+  }
+
+  /* Reviews Landscape */
+
+  .reviews-banner {
+    margin-top: 2%;
+  }
+
+  .reviews-container {
+    margin-top: 10px;
+  }
+
+  .cancel-btn {
+    margin-top: 10px;
+  }
+
+  .sponsor-banner {
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+@media screen and (min-width: 320px) and (orientation: portrait) {
+  * {
+    font-size: .8rem;
+  }
+}
+
+@media screen and (min-width: 567px) and (orientation: landscape) {
+  * {
+    font-size: .9rem;
+  }
+
+  .cancel-btn {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+
