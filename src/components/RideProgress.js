@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class RideProgress extends Component {
-  
+
   cancelRide = async () => {
     let ride_id = localStorage.latest_ride_id;
 
@@ -53,10 +53,11 @@ export default class RideProgress extends Component {
       this.props.history.push('/main');
     }
   }
-  
+
   render() {
     return (
       <div className='container'>
+        <span className='optional-message-container'>Let the Adventure begin! Your Lyft is on its way!</span>
         <button className='button cancel-btn' onClick={this.cancelRide}>Cancel Ride</button>
       </div>
     );
