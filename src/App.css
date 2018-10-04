@@ -205,6 +205,7 @@ body {
   justify-self: center;
   max-height: 300px;
   max-width: 600px;
+  margin-top: 50px;
 }
 
 .loading-message {
@@ -246,6 +247,6 @@ body {
   font-size: 1.2rem;
   grid-column-start: 2;
   grid-row-start: 1;
-  padding-top: 100px;
+  padding-top: 70px;
   z-index: 9;
 }
