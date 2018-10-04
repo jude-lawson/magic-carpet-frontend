@@ -63,9 +63,11 @@ class Main extends Component {
         let confirmation = window.confirm(`This ride will cost about $${min} - $${max} USD. Would you like to continue?`)
         if (confirmation) {
           RideService.callRide(parsed_response.destination, origin)
-          this.setState({
-            loading: false
-          });
+          .then(() => {
+            this.setState({
+              loading: false
+            });
+          })
         } else {
           this.setState({
             loading: false
