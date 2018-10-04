@@ -91,7 +91,7 @@ body {
   border-radius: 50%;
   grid-row: 3;
   height: 130px;
-  margin: 0 auto;
+  margin: 60px auto;
   min-width: auto;
   width: 130px;
 }
@@ -168,7 +168,7 @@ body {
   min-width: 20rem;
   width: 70%;
   z-index: 5;
-  margin-top: 45px;
+  margin-top: 65px;
 }
 
 .settings-cancel-button {
@@ -179,14 +179,14 @@ body {
   font-size: 1.2rem;
   font-weight: 100;
   grid-column: 2;
-  grid-row: 4;
+  grid-row: 3;
   height: 40px;
   justify-self: center;
   letter-spacing: .3rem;
   min-width: 20rem;
   width: 70%;
   z-index: 5;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 /* Cancellation Confirmation*/
 
@@ -269,7 +269,8 @@ body {
   grid-row-start: 2;
   grid-row-end: 3;
   overflow-y: scroll;
-  margin-bottom: 6px;
+  margin-bottom: 1px;
+  margin-top: 40px;
   z-index: 9;
   padding: 4px 8px;
 }
@@ -289,7 +290,11 @@ body {
   }
 
   .settings-cancel-button {
-    margin-top: 20px;
+    margin-top: 30px;
+  }
+
+  .settings-save-button {
+    margin-top: 80px;
   }
 
   /* Reviews Landscape */
@@ -310,11 +315,16 @@ body {
     position: fixed;
     bottom: 0;
   }
+
+  .loading-icon {
+    margin-top: 0;
+    max-height: 280px;
+  }
 }
 
-@media screen and (min-width: 320px) and (orientation: portrait) {
+@media screen and (max-width: 320px) and (orientation: portrait) {
   * {
-    font-size: .8rem;
+    font-size: .9rem;
   }
 }
 
