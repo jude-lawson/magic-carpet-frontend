@@ -45,7 +45,7 @@ class RideService {
     let response = await fetch('https://api.lyft.com/v1/rides', fetch_init)
     let parsed_response = await response.json();
     localStorage.setItem('latest_ride_id', parsed_response.ride_id)
-
+    localStorage.setItem('loading', false)
     window.location.href = '/ride_called'
   }
 }

@@ -28,6 +28,7 @@ body {
   transform: perspective(3000px) rotateX(32deg);
   width:100%;
   pointer-events:none;
+  fill: #3eb9bb;
 }
 
 .background-image:after {
@@ -204,6 +205,15 @@ body {
   justify-self: center;
   max-height: 300px;
   max-width: 600px;
+}
+
+.loading-message {
+  color: #3eb9bb;
+  font-size: 1.4rem;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  padding-top: 40px;
+  z-index: 9;
 }
 
 /* Sponsor Banner */

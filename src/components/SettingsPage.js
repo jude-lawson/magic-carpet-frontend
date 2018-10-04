@@ -4,6 +4,7 @@ import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
+var pluralize = require('pluralize');
 
 export default class SettingsPage extends Component {
 
@@ -54,11 +55,11 @@ export default class SettingsPage extends Component {
         <div className='settings'>
           <h1>{this.props.text}</h1>
           <h4 className='settings-header'>Radius:</h4>
-          <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.radius} onChange={this.saveRadius} allowCross={false} tipFormatter={value => `${value} miles`} dots={true} />
+          <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.radius} onChange={this.saveRadius} allowCross={false} tipFormatter={value => `${pluralize('mile', value, true)}`} dots={true} />
           <h4 className='settings-header'>Rating:</h4>
-            <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.rating} onChange={this.saveRating} allowCross={false} tipFormatter={value => `${value} stars`} dots={true} />
+            <Range min={1} max={5} defaultValue={[2, 4]} value={this.state.rating} onChange={this.saveRating} allowCross={false} tipFormatter={value => `${pluralize('star', value, true)}`} dots={true} />
           <h4 className='settings-header'>Price:</h4>
-            <Range min={1} max={4} defaultValue={[2, 3]} value={this.state.price} onChange={this.savePrice} allowCross={false} tipFormatter={value => `${value} $`} dots={true} />
+            <Range min={1} max={4} defaultValue={[2, 3]} value={this.state.price} onChange={this.savePrice} allowCross={false} tipFormatter={value => '$'.repeat(value)} dots={true} />
         </div>
         <button className='settings-save-button' onClick={(event) => this.saveSettings()}>Save Settings</button>
         <button className='settings-cancel-button' onClick={(event) => this.cancel()}>Back</button>

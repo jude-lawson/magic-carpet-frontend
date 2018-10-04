@@ -4,7 +4,7 @@ const Loader = () => {
 	return (
 		<div className='container'>
 			<img className='loading-icon' alt='loading-icon' src='/images/loading-icon.gif'/>
-			<p>fetching your ride</p>
+			<span className='loading-message'>Fetching your Magic Carpet</span>
 		</div>
 	)
 }
