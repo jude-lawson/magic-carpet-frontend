@@ -28,11 +28,10 @@ body {
   transform: perspective(3000px) rotateX(32deg);
   width:100%;
   pointer-events:none;
-  fill: #3eb9bb;
 }
 
 .background-image:after {
-  background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+  background-image: linear-gradient(to_bottom, rgba(0,0,0,1) 0%, transparent 100%);
   bottom: 80%;
   content: ' ';
   left: 0;
