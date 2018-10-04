@@ -92,7 +92,7 @@ class Main extends Component {
           <IconButton className='settings-button'>
             <Settings className='settings-icon' onClick={this.openSettings}/>
           </IconButton>
-          <span className='optional-message-container'>Don't know where to eat? We'll Handle It. One Button. One Adventure.</span>
+          <span className='optional-message-container'>{this.props.optionalMessage}</span>
           <button className="button magic-carpet-btn" onClick={this.getDestination}>Magic Carpet</button>
         </div>
       );

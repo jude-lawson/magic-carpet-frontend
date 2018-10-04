@@ -9,9 +9,7 @@ const NoDestination = () => {
     </div>
   );
   return (
-    <div className='npo-destination-message-container'>
-      <Main optionalMessage={message} />
-    </div>
+    <Main optionalMessage={message} />
   );
 }
 
