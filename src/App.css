@@ -193,3 +193,11 @@ body {
 .yelp-logo {
   vertical-align: text-bottom;
 }
+
+/*  No Destiantion Page */
+
+.optional-message-container {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  z-index: 9;
+}

@@ -23,26 +23,22 @@ export default class SettingsPage extends Component {
     localStorage.setItem('rating', this.state.rating);
     const priceRange = (start, stop, step) => Array.from({ length: (stop - start) / step }, (_, i) => start + (i * step));
     localStorage.setItem('price', priceRange(this.state.price[0], (this.state.price[1] +1), 1));
-    console.log('settings saved!');
     this.props.history.push('/main');
   }
 
   saveRadius = (radius) => {
-    console.log(radius);
     this.setState({
       radius,
     });
   }
 
   saveRating = (rating) => {
-    console.log(rating);
     this.setState({
       rating,
     });
   }
 
   savePrice = (price) => {
-    console.log(price);
     this.setState({
       price,
     });

@@ -26,7 +26,6 @@ class RideService {
   }
 
   static async callRide(destination, origin) {
-    console.log(`Ride is being called to ${origin.latitude} / ${origin.longitude}`)
 
     let ride_request = JSON.stringify({
       "ride_type": "lyft",
@@ -48,10 +47,6 @@ class RideService {
     localStorage.setItem('latest_ride_id', parsed_response.ride_id)
 
     window.location.href = '/ride_called'
-  }
-
-  static async cancelRide() {
-    console.log(localStorage.latest_ride_id)
   }
 }
 
