@@ -57,6 +57,7 @@ class Main extends Component {
       if (response.status === 400 && parsed_response.error === "ImpossibleRequest: Filter Criteria too strict") {
         this.props.history.push('/no-destination');
       } else {
+        localStorage.setItem('current_reviews', JSON.stringify(parsed_response.destination.reviews));
         let min = (parseFloat(parsed_response.price_range.min_cost) / 100).toFixed(2)
         let max = (parseFloat(parsed_response.price_range.max_cost) / 100).toFixed(2)
         let confirmation = window.confirm(`This ride will cost about $${min} - $${max} USD. Would you like to continue?`)

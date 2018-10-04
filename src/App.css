@@ -250,3 +250,29 @@ body {
   padding-top: 70px;
   z-index: 9;
 }
+/* Reviews */
+
+.reviews-banner {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  margin-top: 20%;
+}
+
+.reviews-container {
+  letter-spacing: .8px;
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 2;
+  padding: 12px 0;
+  background: rgba(0,0,0,.8);
+  border-radius: .2em;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  overflow-y: scroll;
+  margin-bottom: 6px;
+  z-index: 9;
+}
+
+.review {
+  padding: 4px;
+}
