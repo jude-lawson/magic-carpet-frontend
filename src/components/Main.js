@@ -55,6 +55,10 @@ class Main extends Component {
       let response = await fetch(`${process.env['REACT_APP_API_HOSTNAME']}/api/v1/adventures`, fetch_init);
       let parsed_response = await response.json();
       if (response.status === 400 && parsed_response.error === "ImpossibleRequest: Filter Criteria too strict") {
+        if (this.state.loading) {
+          this.setState({ loading: false });
+        }
+        
         this.props.history.push('/no-destination');
       } else {
         localStorage.setItem('current_reviews', JSON.stringify(parsed_response.destination.reviews));
