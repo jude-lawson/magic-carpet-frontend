@@ -2,12 +2,29 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 
 import RideService from '../services/ride_service'
+import Loader from './Loader'
 import Settings from '@material-ui/icons/Settings'
 import IconButton from '@material-ui/core/IconButton';
 
 class Main extends Component {
+  state = {
+    loading: false
+  };
+
+  componentDidMount() {
+    if (localStorage.getItem('minRadius') === undefined) {
+      localStorage.setItem('minRadius', 3219);
+      localStorage.setItem('maxRadius', 6437);
+      localStorage.setItem('rating', [2,4]);
+      localStorage.setItem('price', [2,3]);
+    }
+  }
 
   getDestination = async () => {
+    this.setState({
+      loading: true
+    });
+
     navigator.geolocation.getCurrentPosition((position) => {
       retrieveDestination(position);
     });
@@ -45,7 +62,13 @@ class Main extends Component {
         let confirmation = window.confirm(`This ride will cost about $${min} - $${max} USD. Would you like to continue?`)
         if (confirmation) {
           RideService.callRide(parsed_response.destination, origin)
+          this.setState({
+            loading: false
+          });
         } else {
+          this.setState({
+            loading: false
+          });
           return;
         }
       }
@@ -57,15 +80,22 @@ class Main extends Component {
   }
 
   render () {
-    return(
-      <div className='container'>
-        <IconButton className='settings-button'>
-          <Settings className='settings-icon' onClick={this.openSettings}/>
-        </IconButton>
-        <span className='optional-message-container'>{this.props.optionalMessage}</span>
-        <button className="button magic-carpet-btn" onClick={this.getDestination}>Magic Carpet</button>
-      </div>
-    );
+    if(this.state.loading) {
+      return(
+        <Loader></Loader>
+      );
+    }
+    else {
+      return(
+        <div className='container'>
+          <IconButton className='settings-button'>
+            <Settings className='settings-icon' onClick={this.openSettings}/>
+          </IconButton>
+          <span className='optional-message-container'>Don't know where to eat? We'll Handle It. One Button. One Adventure.</span>
+          <button className="button magic-carpet-btn" onClick={this.getDestination}>Magic Carpet</button>
+        </div>
+      );
+    }
   }
 }
 
