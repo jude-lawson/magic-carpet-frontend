@@ -7,6 +7,15 @@ import IconButton from '@material-ui/core/IconButton';
 
 class Main extends Component {
 
+  componentDidMount() {
+    if (localStorage.getItem('minRadius') == undefined) {
+      localStorage.setItem('minRadius', 3219);
+      localStorage.setItem('maxRadius', 6437);
+      localStorage.setItem('rating', [2,4]);
+      localStorage.setItem('price', [2,3]);
+    }
+  }
+
   getDestination = async () => {
     navigator.geolocation.getCurrentPosition((position) => {
       retrieveDestination(position);
